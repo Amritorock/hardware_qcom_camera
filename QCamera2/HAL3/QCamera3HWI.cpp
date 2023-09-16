@@ -3163,9 +3163,11 @@ int QCamera3HardwareInterface::configureStreamsPerfLocked(
                             channel->setUBWCEnabled(true);
                         }
                         newStream->max_buffers = channel->getNumBuffers();
+#if 0
                         if (isTypeVideo == IS_TYPE_VENDOR_EIS) {
                             newStream->max_buffers = MAX_VIDEO_VENDOR_EIS_BUFFERS;
                         }
+#endif
                         newStream->priv = channel;
                     }
                     break;
@@ -8330,6 +8332,7 @@ no_error:
                     return BAD_VALUE;
                 }
             }
+#if 0
             if ((isTypePreview == IS_TYPE_VENDOR_EIS) &&
                (((1U << CAM_STREAM_TYPE_PREVIEW) == channel->getStreamTypeMask()))) {
                 //Trigger Perf Flush event to back-end
@@ -8340,6 +8343,7 @@ no_error:
                     return BAD_VALUE;
                 }
             }
+#endif
         }
     }
 
